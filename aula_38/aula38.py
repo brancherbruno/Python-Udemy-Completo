@@ -113,9 +113,21 @@ exemplo de jogo de adivinhação
 
 secreto = "programador"
 let_user = []
+chance = 3
 
 nome = input('Qual seu nome: ')
 while True:
+    if chance == 0:
+        print(f'Que pena {nome}, você perdeu!')
+        des = input(f'{nome} deseja jogar novamente? [S/N]: ').upper()
+        if des == 'S':
+            sec_temp = ''
+            let_user.clear()
+            chance = chance + 3
+            continue
+        else:
+            print(f'Obrigado por jogar, {nome}.')
+            break
     letra = input(f'{nome} digite uma letra: ')
 
     if len(letra) > 1:
@@ -136,15 +148,18 @@ while True:
     print(sec_temp)
     if sec_temp == secreto:
         print(f'Parabéns {nome}, você adivinhou a palavra secreta: {secreto}!')
-        des = input(f'{nome} deseja jogar novamente? [S/N]: ')
-        if des == 'N' or 'n':
+        des = input(f'{nome} deseja jogar novamente? [S/N]: ').upper()
+        if des == 'N':
             print(f'Obrigado por jogar {nome}')
             break
         else:
             sec_temp = ''
             let_user.clear()
-    else:
-        continue
+    if letra not in secreto:
+        chance -= 1
+    print(f'Você ainda tem {chance} chance(s) {nome}.')
+    print()
+
 
 
 
