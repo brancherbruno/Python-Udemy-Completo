@@ -1,3 +1,5 @@
+from time import sleep  # para jogo de adivinhacao
+
 """
 Listas
 Fatiamento
@@ -105,47 +107,55 @@ print()
 print('=' * 20)
 
 """
-exemplo de jogo de adivinhação
+Exemplo de jogo de adivinhação
 """
 
-secreto = "PROGRAMADOR"
+secreto = "LAGARTO"
 let_user = []
 chance = 3
-
+print('='*20)
+print('Bem vindo ao jogo de adivinhação!')
+print()
+print('A dica da palavra é: Animal que come ovos.')
+print('='*20)
+print()
 nome = str(input('Qual seu nome: ')).title()
 while True:
-    '''linha 118 a 130: comando caso o usuário erre 3x a letra e solicita se o usuário quer continuar a jogar, caso
+    '''linha 14 a 24: comando caso o usuário erre 3x a letra e solicita se o usuário quer continuar a jogar, caso
      a resposta seja positiva, vai limpar a variável SEC_TEMP, a lista LET_USER e reiniciar as chances para 3, caso
      negativo vai agradecer e finalizar o executável'''
     if chance == 0:
         print(f'Que pena {nome}, você perdeu!')
         des = input(f'{nome} deseja jogar novamente? [S/N]: ').upper()
         if des == 'S':
+            print()
             sec_temp = ''
             let_user.clear()
             chance = chance + 3
             continue
         else:
             print(f'Obrigado por jogar, {nome}.')
+            sleep(6)
             break
     letra = str(input(f'{nome} digite uma letra: ')).upper()
+    print()
 
-    '''linha 135 a 138: comando para informar que o usuário deve digitar somente uma letra. Comando também soma uma 
+    '''linha 29 a 32: comando para informar que o usuário deve digitar somente uma letra. Comando também soma uma 
     letra a lista de letras do usuário (caso ele digite uma letra somente)'''
     if len(letra) > 1:
         print(f'Isso não vale {nome}, digite apenas uma letra! Tente novamente!')
         continue
     let_user.append(letra)
 
-    '''linha 143 a 147: comando para informar que a letra está ou não na palavra secreta. Caso a letra não seja a 
+    '''linha 36 a 40: comando para informar que a letra está ou não na palavra secreta. Caso a letra não seja a 
     correta o sistema vai zerar apagar a última letra digitada incorretamente.'''
     if letra in secreto:
         print(f'A letra "{letra}" está na palavra secreta {nome}!')
     else:
         print(f'Que pena! A letra "{letra}" não está na palavra secreta. {nome}, tente novamente!')
         let_user.pop()
-
-    '''linha 153 a 159: cria uma variável temporária SEC_TEMP para as letras que o usuário digitar corretamente e mostra
+    print()
+    '''linha 47 a 53: cria uma variável temporária SEC_TEMP para as letras que o usuário digitar corretamente e mostra
     em tela as letras corretas e as letras a adivinhar. O código vai verificar se a varável temporária ADV está   
     contida na variável SECRETO. Se estiver contido na variável SECRETO, o código vai verificar se a variável ADV 
     está contido na lista LET_USER e vai somar a variável ADV dentro da variável SEC_TEMP junto com as letras já 
@@ -157,8 +167,8 @@ while True:
         else:
             sec_temp += '*'
     print(sec_temp)
-
-    '''linha 169 a 177: verifica se as letras da variável temporária SEC_TEMP é igual a palavra da variável SECRETO.
+    print()
+    '''linha 55 a 66: verifica se as letras da variável temporária SEC_TEMP é igual a palavra da variável SECRETO.
     Se for igual, vai informar o usuário que ele adivinhou a palavra e solicitar se quer jogar novamente. Caso o 
     usuário informar que sim, ele vai limpar a variável SEC_TEMP e limpar a lista LET_USER para recomeçar o jogo.'''
     if sec_temp == secreto:
@@ -166,15 +176,17 @@ while True:
         des = input(f'{nome} deseja jogar novamente? [S/N]: ').upper()
         if des == 'N':
             print(f'Obrigado por jogar {nome}')
+            sleep(6)
             break
         else:
             sec_temp = ''
             let_user.clear()
-    '''linha 174 a linha 176: no começo do código é criado a chance de 3 tentativas do usuário acertar a palavra. Caso 
+            chance = 3
+    '''linha 67 a linha 72: no começo do código é criado a chance de 3 tentativas do usuário acertar a palavra. Caso 
     o usuário não acerte o código abaixo vai diminuindo as chances do usuário até zerar, mostrando sempre quantas
     chances o usuário tem.'''
     if letra not in secreto:
         chance -= 1
-    print(f'Você ainda tem {chance} chance(s) {nome}.')
+        print(f'Você ainda tem {chance} chance(s) {nome}.')
     print()
 print('=' * 20)
