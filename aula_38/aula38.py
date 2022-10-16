@@ -159,30 +159,4 @@ while True:
         chance -= 1
     print(f'Você ainda tem {chance} chance(s) {nome}.')
     print()
-
-
-
-
-print()
 print('='*20)
-
-
-print()
-print('='*20)
-
-
-
-print()
-print('='*20)
-
-
-
-print()
-print('='*20)
-
-
-
-print()
-print('='*20)
-
-
