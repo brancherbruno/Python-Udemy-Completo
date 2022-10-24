@@ -1,0 +1,9 @@
+"""
+Operador Ternário
+"""
+
+
+
+
+
+
