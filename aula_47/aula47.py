@@ -6,4 +6,11 @@ while positivo < 11 and negativo >= 0:
     positivo += 1
     negativo -= 1
 
+print()
+
+for p, n in enumerate(range(10, 0, -1)):
+    print(p, n)
+
+
+
 
